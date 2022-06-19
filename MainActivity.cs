@@ -40,6 +40,7 @@ namespace METARs
             SetSupportActionBar(toolbar);
 
             stationIdent = (Android.Widget.EditText)FindViewById<View>(Resource.Id.stationIdent);
+            // no need for ime actions in the layout as .Net triggers the editor action when enter is pressed
             stationIdent.EditorAction += StationIdentEditorAction;
 
             textOut = (Android.Widget.TextView)FindViewById<View>(Resource.Id.textOut);
@@ -122,6 +123,8 @@ namespace METARs
         private readonly HttpClient _httpClient = new HttpClient(new Xamarin.Android.Net.AndroidClientHandler());
 
         // This method will run in its own thread for each occurance that is called
+        // yet again .Net wins the battle with easier strategies for thread programming
+        // all we really need here is the async semantic
         public async void AsyncHttpRequest(List<String> response, String url)
         {
             Uri uri = new Uri(string.Format(url, string.Empty));
