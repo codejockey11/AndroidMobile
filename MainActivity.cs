@@ -74,6 +74,7 @@ namespace METARs
 
             metar = new List<String>();
 
+            // https is required with Android http calls
             AsyncHttpRequest(metar, "https://www.aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars&requestType=retrieve&format=xml&hoursBeforeNow=1&stationString=" + stationIdent.Text);
 
             foreach (String s in metar)
