@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stationIdentLabel"
+        android:text="@string/stationIdentLabel"
+        android:textSize="@dimen/textSize"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="@dimen/topMargin"
+        android:layout_marginLeft="@dimen/leftMargin"/>
+
+    <EditText
+        android:layout_width="@dimen/identWidth"
+        android:layout_height="wrap_content"
+        android:id="@+id/stationIdent"
+        android:textSize="@dimen/textSize"
+        android:layout_toRightOf="@id/stationIdentLabel"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/textOut"
+        android:textSize="@dimen/textSize"
+        android:layout_below="@id/stationIdentLabel"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:layout_marginLeft="@dimen/leftMargin"
+        android:layout_marginRight="@dimen/rightMargin" />
+
+</RelativeLayout>
