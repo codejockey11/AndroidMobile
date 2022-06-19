@@ -11,9 +11,9 @@ using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Snackbar;
 
 // http requests
-// be sure that project properties in the manifest that INTERNET option is checked under required permissions
-// if no connection can be made after checking that be sure that mobile data is enabled in the device
-// when wifi is not being used or your http calls will fail.
+// be sure that within project properties the INTERNET option is checked under required permissions
+// your http calls will fail if you are not using wifi and have the use mobile data option off in the device
+// 
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Http;
