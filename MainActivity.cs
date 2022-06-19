@@ -40,7 +40,7 @@ namespace METARs
             SetSupportActionBar(toolbar);
 
             stationIdent = (Android.Widget.EditText)FindViewById<View>(Resource.Id.stationIdent);
-            // no need for ime actions in the layout as .Net triggers the editor action when enter is pressed
+            // no need for ime actions in the layout as .Net triggers the editor action when enter is pressed on the soft keyboard
             stationIdent.EditorAction += StationIdentEditorAction;
 
             textOut = (Android.Widget.TextView)FindViewById<View>(Resource.Id.textOut);
