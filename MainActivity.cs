@@ -119,6 +119,8 @@ namespace METARs
                 {
                     textOut.Text += FormatMetarEntry(node);
                 }
+
+                textOut.Text += "\n";
             }
 
             taf = new List<String>();
@@ -135,7 +137,7 @@ namespace METARs
 
                 foreach (XmlNode node in nodes)
                 {
-                    //textOut.Text += FormatTafEntry(node);
+                    textOut.Text += FormatTafEntry(node);
                 }
             }
         }
@@ -223,7 +225,7 @@ namespace METARs
 
             t += String.Format("\nTime:{0}", FlipTimeDate(node["observation_time"].InnerText.Replace("T", " ")));
 
-            t += String.Format("\nGPS:{0} {1}", node["latitude"].InnerText, node["longitude"].InnerText);
+            t += String.Format("\nGPS:{0}, {1}", node["latitude"].InnerText, node["longitude"].InnerText);
 
             t += String.Format("\nTemperature:{0:F2}  ({1:F2})", node["temp_c"].InnerText, tc.fValue);
 
@@ -371,22 +373,86 @@ namespace METARs
                 t += String.Format("\nMetar Type:{0}", node["metar_type"].InnerText);
             }
 
-            t += String.Format("\nElevation:{0:F2}  ({1:F2})\n\n", stationInfo.elevation_m, (stationInfo.elevation_m * 3.2808399));
+            t += String.Format("\nElevation:{0:F2}  ({1:F2})", stationInfo.elevation_m, (stationInfo.elevation_m * 3.2808399));
 
             return t;
         }
 
+        public String FormatTafEntry(XmlNode node)
+        {
+            String t = new String("\nTAF");
+
+            t += String.Format("\nRaw Text:{0}", node["raw_text"].InnerText);
+
+            t += String.Format("\nStation ID:{0}", node["station_id"].InnerText);
+
+            t += String.Format("\nIssue:{0}", FlipTimeDate(node["issue_time"].InnerText.Replace("T", " ")));
+
+            t += String.Format("\nBulletin:{0}", FlipTimeDate(node["bulletin_time"].InnerText.Replace("T", " ")));
+
+            t += String.Format("\nValid From:{0} To:{1}", FlipTimeDate(node["valid_time_from"].InnerText.Replace("T", " ")), FlipTimeDate(node["valid_time_to"].InnerText.Replace("T", " ")));
+
+            if (node["change_indicator"] != null)
+            {
+                t += String.Format("\nChange:{0}", node["change_indicator"].InnerText);
+            }
+
+            if (node["remarks"] != null)
+            {
+                t += String.Format("\nRemarks:{0}", node["remarks"].InnerText);
+            }
+
+            t += String.Format("\nGPS:{0}, {1}", Convert.ToDouble(node["latitude"].InnerText), Convert.ToDouble(node["longitude"].InnerText));
+
+            t += String.Format("\nElevation:{0:F2} ({1:F2})\n", Convert.ToDouble(node["elevation_m"].InnerText), Convert.ToDouble(node["elevation_m"].InnerText) * 3.2808399);
 
 
+            XmlNodeList nl = node.SelectNodes("forecast");
 
+            foreach (XmlNode n in nl)
+            {
+                t += String.Format("\nFrom:{0} To:{1}", FlipTimeDate(n["fcst_time_from"].InnerText.Replace("T", " ")), FlipTimeDate(n["fcst_time_to"].InnerText.Replace("T", " ")));
 
+                if (n["change_indicator"] != null)
+                {
+                    t += String.Format("\nChange:{0}", n["change_indicator"].InnerText);
+                }
 
+                if (n["wind_dir_degrees"] != null)
+                {
+                    t += String.Format("\nWinds:{0}/{1}", n["wind_dir_degrees"].InnerText, n["wind_speed_kt"].InnerText);
+                }
 
+                if (n["wx_string"] != null)
+                {
+                    t += String.Format("\nWX:{0}", n["wx_string"].InnerText);
+                }
 
+                if (n["visibility_statute_mi"] != null)
+                {
+                    t += String.Format("\nVisibility:{0}", n["visibility_statute_mi"].InnerText);
+                }
 
+                if (n["sky_condition"] != null)
+                {
+                    t += String.Format("\nSky:");
 
+                    XmlNodeList snl = n.SelectNodes("sky_condition");
 
+                    foreach (XmlNode sn in snl)
+                    {
+                        foreach (XmlAttribute a in sn.Attributes)
+                        {
+                            t += a.InnerText + " ";
+                        }
+                    }
+                }
 
+                t += "\n";
+            }
+
+            return t;
+        }
 
         public Double PressureAltitude(Double p)
         {
