@@ -1,7 +1,0 @@
-<resources>
-  <dimen name="textSize">18.0sp</dimen>
-  <dimen name="topMargin">10.0sp</dimen>
-  <dimen name="leftMargin">10.0sp</dimen>
-  <dimen name="rightMargin">10.0sp</dimen>
-  <dimen name="identWidth">100.0sp</dimen>
-</resources>
