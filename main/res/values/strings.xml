@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HandlerLooper</string>
+    <string name="htmlResponse">Response Here</string>
+    <string name="buttonNext">Next</string>
+</resources>
