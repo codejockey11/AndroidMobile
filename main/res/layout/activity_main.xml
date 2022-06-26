@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/stationIdentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/topMargin"
+        android:layout_marginLeft="@dimen/leftMargin"
+        android:text="@string/stationIdentLabel"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/stationIdent"
+        android:layout_width="@dimen/identWidth"
+        android:layout_height="wrap_content"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true"
+        android:textSize="@dimen/textSize"
+        android:imeOptions="actionGo"
+        app:layout_constraintLeft_toRightOf="@id/stationIdentLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/textOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stationIdentLabel"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintTop_toBottomOf="@id/stationIdent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
