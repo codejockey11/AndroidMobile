@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(httpRequester);
             }
         });
-
     }
 
     private Handler SetupHandlerThreads()
@@ -51,9 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // A handler thread is required for each thread being executed
         // In an Async request all the thread handling is inherited
         // but here the actual thread handler needs to be set up
-
-        // Grabbing FirstFragment's Looper (aka message queue)
-        //Handler uiThread = new Handler(Looper.getMainLooper());
 
         // Make the new thread
         HandlerThread handlerThread = new HandlerThread("HttpRequesterHandler");
@@ -85,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         // The SetupHandlerThreads() method cannot be encapsulated
                         // in another object for that reason.
 
-                        // Getting FirstFragment's (this object) main view thread and posting to it
+                        // Getting the Activity (application) main view thread and posting to it
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
@@ -108,5 +104,4 @@ public class MainActivity extends AppCompatActivity {
     private void UpdateView() {
         htmlResponse.setText(httpRequester.buffer);
     }
-
 }
