@@ -1,19 +1,15 @@
 package com.example.metars;
 
-public class Temperature
-{
+public class Temperature {
     public Double fValue;
     public Double cValue;
     public Double kValue;
     public Double rValue;
     public Double vValue;
 
-    public Temperature(String tp, Double t)
-    {
-        switch (tp)
-        {
-            case "C":
-            {
+    public Temperature(String tp, Double t) {
+        switch (tp) {
+            case "C": {
                 cValue = t;
                 fValue = ConvertCtoF(cValue);
                 kValue = ConvertCtoK(cValue);
@@ -22,8 +18,7 @@ public class Temperature
                 break;
             }
 
-            case "F":
-            {
+            case "F": {
                 fValue = t;
                 cValue = ConvertFtoC(fValue);
                 kValue = ConvertCtoK(cValue);
@@ -32,8 +27,7 @@ public class Temperature
                 break;
             }
 
-            case "K":
-            {
+            case "K": {
                 kValue = t;
                 cValue = ConvertKtoC(kValue);
                 fValue = ConvertCtoF(cValue);
@@ -44,23 +38,19 @@ public class Temperature
         }
     }
 
-    public Double ConvertCtoF(Double t)
-    {
+    public Double ConvertCtoF(Double t) {
         return (t * (9 / 5)) + 32;
     }
 
-    public Double ConvertCtoK(Double t)
-    {
+    public Double ConvertCtoK(Double t) {
         return t + 273.15;
     }
 
-    public Double ConvertFtoC(Double t)
-    {
+    public Double ConvertFtoC(Double t) {
         return (t - 32) * (5 / 9);
     }
 
-    public Double ConvertKtoR(Double t)
-    {
+    public Double ConvertKtoR(Double t) {
         Double tc = ConvertKtoC(t);
 
         Double tf = ConvertCtoF(tc);
@@ -68,8 +58,7 @@ public class Temperature
         return tf + 459.69;
     }
 
-    public Double ConvertKtoC(Double t)
-    {
+    public Double ConvertKtoC(Double t) {
         return t - 273.15;
     }
 }

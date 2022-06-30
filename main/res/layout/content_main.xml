@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:id="@+id/stationIdentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/leftMargin"
+        android:layout_marginTop="@dimen/topMargin"
+        android:text="@string/stationIdentLabel"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/stationIdent"
+        android:layout_width="@dimen/identWidth"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/leftMargin"
+        android:autofillHints=""
+        android:hint="@string/airport"
+        android:imeOptions="actionGo"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintLeft_toRightOf="@id/stationIdentLabel"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/textOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stationIdentLabel"
+        android:autofillHints="response"
+        android:hint="@string/response"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:textSize="@dimen/textSize"
+        app:layout_constraintTop_toBottomOf="@id/stationIdent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

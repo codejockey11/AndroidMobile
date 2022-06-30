@@ -4,13 +4,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.net.UnknownServiceException;
 
 public class HttpRequester implements Runnable {

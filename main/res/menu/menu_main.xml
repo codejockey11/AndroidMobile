@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.metars.MainActivity">
+
+    <item
+        android:id="@+id/type_raw"
+        android:orderInCategory="200"
+        android:title="@string/type_raw"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/type_formatted"
+        android:orderInCategory="300"
+        android:title="@string/type_formatted"
+        app:showAsAction="never" />
+
+</menu>

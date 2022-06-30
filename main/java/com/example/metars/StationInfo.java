@@ -1,7 +1,6 @@
 package com.example.metars;
 
-public class StationInfo
-{
+public class StationInfo {
     public String station_id;
     public Double latitude;
     public Double longitude;
@@ -11,7 +10,7 @@ public class StationInfo
     public String country;
     public String type;
 
-    StationInfo(){
+    StationInfo() {
         station_id = "";
         latitude = 0.0;
         longitude = 0.0;
