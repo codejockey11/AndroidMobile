@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">METARs</string>
-    <string name="stationIdentLabel">Station Ident:</string>
+    <string name="stationIdentLabel">Station:</string>
     <string name="type_raw">Raw</string>
     <string name="type_formatted">Formatted</string>
     <string name="airport">Airport</string>
     <string name="response">Response</string>
+    <string name="stationNotFound">Station not found</string>
 </resources>

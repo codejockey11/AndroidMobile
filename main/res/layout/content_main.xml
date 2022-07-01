@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/topMargin"
         android:text="@string/stationIdentLabel"
         android:textSize="@dimen/textSize"
+        style="@style/Theme.METARs.Text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,24 +23,27 @@
         android:layout_width="@dimen/identWidth"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/leftMargin"
-        android:autofillHints=""
         android:hint="@string/airport"
         android:imeOptions="actionGo"
         android:inputType="textNoSuggestions"
         android:singleLine="true"
         android:textSize="@dimen/textSize"
+        style="@style/Theme.METARs.Text"
         app:layout_constraintLeft_toRightOf="@id/stationIdentLabel"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/stationIdent" >
+
+        <TextView
         android:id="@+id/textOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/stationIdentLabel"
-        android:autofillHints="response"
-        android:hint="@string/response"
-        android:inputType="textMultiLine|textNoSuggestions"
         android:textSize="@dimen/textSize"
-        app:layout_constraintTop_toBottomOf="@id/stationIdent" />
+        style="@style/Theme.METARs.Text" />
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,11 +6,13 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -210,24 +212,38 @@ public class MainActivity extends AppCompatActivity {
                         if (!xpp.isWhitespace()) {
                             if (Objects.equals(name, "station_id")) {
                                 station.station_id = xpp.getText();
+
+                                break;
                             }
                             if (Objects.equals(name, "latitude")) {
                                 station.latitude = Double.parseDouble(xpp.getText());
+
+                                break;
                             }
                             if (Objects.equals(name, "longitude")) {
                                 station.longitude = Double.parseDouble(xpp.getText());
+
+                                break;
                             }
                             if (Objects.equals(name, "elevation_m")) {
                                 station.elevation_m = Double.parseDouble(xpp.getText());
+
+                                break;
                             }
                             if (Objects.equals(name, "site")) {
                                 station.site = xpp.getText();
+
+                                break;
                             }
                             if (Objects.equals(name, "state")) {
                                 station.state = xpp.getText();
+
+                                break;
                             }
                             if (Objects.equals(name, "country")) {
                                 station.country = xpp.getText();
+
+                                break;
                             }
                         }
                     } catch (XmlPullParserException e) {
@@ -240,10 +256,14 @@ public class MainActivity extends AppCompatActivity {
                     name = xpp.getName();
                     if (Objects.equals(name, "METAR")) {
                         station.type.concat("METAR");
+
+                        break;
                     }
                     if (Objects.equals(name, "TAF")) {
                         station.type.concat("/TAF");
                     }
+
+                    break;
                 }
             }
             try {
@@ -334,99 +354,159 @@ public class MainActivity extends AppCompatActivity {
                         if (!xpp.isWhitespace()) {
                             if (Objects.equals(name, "raw_text")) {
                                 if (displayFormatted) {
-                                    sb.append("\nRaw Text:").append(xpp.getText());
+                                    sb.append("\n\nRaw Text:").append(xpp.getText());
                                 } else {
-                                    sb.append("\n").append(xpp.getText());
+                                    sb.append("\n\n").append(xpp.getText());
                                 }
+
+                                break;
                             }
 
                             if (displayFormatted) {
                                 if (Objects.equals(name, "observation_time")) {
                                     sb.append("\nTime:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "latitude")) {
                                     sb.append("\nGPS:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "longitude")) {
                                     sb.append(", ").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wind_dir_degrees")) {
                                     sb.append("\nWinds:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wind_speed_kt")) {
                                     sb.append("/").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wind_gust_kt")) {
                                     sb.append("\nWind Gust:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "visibility_statute_mi")) {
                                     sb.append("\nVisibility:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "sea_level_pressure_mb")) {
                                     sb.append("\nSea level Pressure:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wx_string")) {
                                     sb.append("\nWX:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "corrected")) {
                                     sb.append("\nCorrected:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "auto")) {
                                     sb.append("\nAuto:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "auto_station")) {
                                     sb.append("\nAuto Station:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "maintenance_indicator_on")) {
                                     sb.append("\nMaintenance:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "no_signal")) {
                                     sb.append("\nNo Signal:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "lightning_sensor_off")) {
                                     sb.append("\nLightning Sensor Off:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "freezing_rain_sensor_off")) {
                                     sb.append("\nFreezing Rain Sensor Off:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "present_weather_sensor_off")) {
                                     sb.append("\nPresent Weather Sensor Off:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "flight_category")) {
                                     sb.append("\nFlight Category:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "maxT_c")) {
                                     sb.append("\nMax Temp:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "minT_c")) {
                                     sb.append("\nMin Temp:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "maxT24hr_c")) {
                                     sb.append("\nMax Temp 24hr:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "minT24hr_c")) {
                                     sb.append("\nMin Temp 24hr:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "precip_in")) {
                                     sb.append("\nPrecipitation:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "pcp3hr_in")) {
                                     sb.append("\nPrecipitation 3hr:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "pcp6hr_in")) {
                                     sb.append("\nPrecipitation 6hr:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "pcp24hr_in")) {
                                     sb.append("\nPrecipitation 24hr:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "snow_in")) {
                                     sb.append("\nSnow:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "vert_vis_ft")) {
                                     sb.append("\nVertical Visibility:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "metar_type")) {
                                     sb.append("\nMetar Type:").append(xpp.getText());
+
+                                    break;
                                 }
                             }
 
@@ -438,6 +518,8 @@ public class MainActivity extends AppCompatActivity {
                                 if (displayFormatted) {
                                     sb.append("\nTemperature:").append(xpp.getText()).append(" (").append(String.format(Locale.ENGLISH, "%.2f", tc.fValue)).append(")");
                                 }
+
+                                break;
                             }
                             if (Objects.equals(name, "dewpoint_c")) {
                                 dewpoint = Double.parseDouble(xpp.getText());
@@ -447,6 +529,8 @@ public class MainActivity extends AppCompatActivity {
                                 if (displayFormatted) {
                                     sb.append("\nDewpoint:").append(xpp.getText()).append(" (").append(String.format(Locale.ENGLISH, "%.2f", dc.fValue)).append(")");
                                 }
+
+                                break;
                             }
                             if (Objects.equals(name, "altim_in_hg")) {
                                 altimeter = Double.parseDouble(xpp.getText());
@@ -454,6 +538,8 @@ public class MainActivity extends AppCompatActivity {
                                 if (displayFormatted) {
                                     sb.append("\nAltimeter:").append(String.format(Locale.ENGLISH, "%.2f", Double.parseDouble(xpp.getText())));
                                 }
+
+                                break;
                             }
                         }
                     } catch (XmlPullParserException e) {
@@ -554,51 +640,79 @@ public class MainActivity extends AppCompatActivity {
                         if (!xpp.isWhitespace()) {
                             if (Objects.equals(name, "raw_text")) {
                                 if (displayFormatted) {
-                                    sb.append("\nRaw Text:").append(xpp.getText().replace("FM", "\nFM"));
+                                    sb.append("\n\nRaw Text:").append(xpp.getText().replace("FM", "\nFM"));
                                 } else {
-                                    sb.append("\n").append(xpp.getText().replace("FM", "\nFM"));
+                                    sb.append("\n\n").append(xpp.getText().replace("FM", "\nFM"));
                                 }
+
+                                break;
                             }
 
                             if (displayFormatted) {
                                 if (Objects.equals(name, "issue_time")) {
                                     sb.append("\nIssue:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "bulletin_time")) {
                                     sb.append("\nBulletin:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "valid_time_from")) {
                                     sb.append("\nValid From:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "valid_time_to")) {
-                                    sb.append(" To:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+                                    sb.append("\nValid To:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "fcst_time_from")) {
-                                    sb.append("\nForecast From:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+                                    sb.append("\n\nForecast\nFrom:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "fcst_time_to")) {
-                                    sb.append(" To:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+                                    sb.append("\nTo:").append(FlipTimeDate(xpp.getText().replace("T", " ")));
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "change_indicator")) {
                                     sb.append("\nChange:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "probability")) {
                                     sb.append("\nProbability:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "remarks")) {
                                     sb.append("\nRemarks:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wind_dir_degrees")) {
                                     sb.append("\nWinds:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wind_speed_kt")) {
                                     sb.append("/").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "wx_string")) {
                                     sb.append("\nWX:").append(xpp.getText());
+
+                                    break;
                                 }
                                 if (Objects.equals(name, "visibility_statute_mi")) {
                                     sb.append("\nVisibility:").append(xpp.getText());
+
+                                    break;
                                 }
                             }
                         }
@@ -628,7 +742,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        EditText textOut = findViewById(R.id.textOut);
+        TextView textOut = findViewById(R.id.textOut);
+
+        if (Objects.equals(station.station_id, "")) {
+            textOut.setText(R.string.stationNotFound);
+
+            return;
+        }
 
         String str = "";
 
@@ -637,15 +757,17 @@ public class MainActivity extends AppCompatActivity {
 
             str += ("\n\nATMOSPHERE");
 
-            str += FormatAtmosphereData();
+            if (metarBuilder.toString().length() > 0) {
+                str += FormatAtmosphereData();
+            }
 
             str += "\n\nMETAR";
         } else {
             str += ("ATMOSPHERE");
 
-            str += FormatAtmosphereData();
-
-            str += "\n";
+            if (metarBuilder.toString().length() > 0) {
+                str += FormatAtmosphereData();
+            }
         }
 
         str += metarBuilder.toString();
@@ -656,11 +778,12 @@ public class MainActivity extends AppCompatActivity {
 
         str += tafBuilder.toString();
 
-        str += "\n\n";
+        str += "\n\n\n";
 
         textOut.setText(str);
     }
 
+    @NonNull
     private String FormatAtmosphereData()
     {
         double alt = station.elevation_m * 3.2808399;
@@ -738,6 +861,7 @@ public class MainActivity extends AppCompatActivity {
         return 100 * (Math.exp((17.625 * d) / (243.04 + d)) / Math.exp((17.625 * t) / (243.04 + t)));
     }
 
+    @NonNull
     private String FlipTimeDate(@NonNull String str) {
         String[] stra = str.split(" ");
 
@@ -771,21 +895,35 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        EditText stationIdent = findViewById(R.id.stationIdent);
+
         if (id == R.id.type_raw) {
             displayFormatted = false;
+
             saveUserPreferences();
-            metarBuilder = parseMetarInfo();
-            tafBuilder = parseTafInfo();
-            updateView();
+
+            if (stationIdent.getText().length() != 0) {
+                metarBuilder = parseMetarInfo();
+                tafBuilder = parseTafInfo();
+
+                updateView();
+            }
+
             return true;
         }
 
         if (id == R.id.type_formatted) {
             displayFormatted = true;
+
             saveUserPreferences();
-            metarBuilder = parseMetarInfo();
-            tafBuilder = parseTafInfo();
-            updateView();
+
+            if (stationIdent.getText().length() != 0) {
+                metarBuilder = parseMetarInfo();
+                tafBuilder = parseTafInfo();
+
+                updateView();
+            }
+
             return true;
         }
 
@@ -796,7 +934,9 @@ public class MainActivity extends AppCompatActivity {
     {
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
         SharedPreferences.Editor editor = settings.edit();
+
         editor.putBoolean("displayFormatted", displayFormatted);
+
         editor.apply();
     }
 }

@@ -4,12 +4,14 @@
     tools:context="com.example.metars.MainActivity">
 
     <item
+        android:theme="@style/Theme.METARs.AppBarOverlay"
         android:id="@+id/type_raw"
         android:orderInCategory="200"
         android:title="@string/type_raw"
         app:showAsAction="never" />
 
     <item
+        android:theme="@style/Theme.METARs.AppBarOverlay"
         android:id="@+id/type_formatted"
         android:orderInCategory="300"
         android:title="@string/type_formatted"
