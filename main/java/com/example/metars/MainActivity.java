@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     // counting each request as it comes back
     private int handlerWaitCount = 0;
     private final int maxWaitHandlers = 3;
+    private final double feetInMeters = 3.2808399;
 
     // making three handler requests on the looper thread
     private HttpRequester stationHttpRequester;
@@ -757,7 +758,9 @@ public class MainActivity extends AppCompatActivity {
         String str = "";
 
         if (displayFormatted) {
-            str = station.site + " " + station.state + " " + station.type;
+            str = "Location:" + station.site + " " + station.state;
+
+            str += String.format("\nAltitude:%.2f", station.elevation_m * feetInMeters);
 
             str += ("\n\nATMOSPHERE");
 
@@ -790,7 +793,7 @@ public class MainActivity extends AppCompatActivity {
     @NonNull
     private String FormatAtmosphereData()
     {
-        double alt = station.elevation_m * 3.2808399;
+        double alt = station.elevation_m * feetInMeters;
 
         Temperature tc = new Temperature("C", temp);
 
@@ -806,7 +809,7 @@ public class MainActivity extends AppCompatActivity {
 
         String str = "\nPressure Altitude:" + String.format(Locale.ENGLISH, "%.2f", pa + alt);
 
-        str += "\nDensity Altitude:" + String.format(Locale.ENGLISH, "%.2f", da) + " (" + String.format(Locale.ENGLISH, "%.2f", (station.elevation_m * 3.2808399) + da) + ")";
+        str += "\nDensity Altitude:" + String.format(Locale.ENGLISH, "%.2f", da) + " (" + String.format(Locale.ENGLISH, "%.2f", (station.elevation_m * feetInMeters) + da) + ")";
 
         str += "\nRelative Humidity:" + String.format(Locale.ENGLISH, "%.2f", rh);
 
