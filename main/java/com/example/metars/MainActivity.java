@@ -110,11 +110,13 @@ public class MainActivity extends AppCompatActivity {
                 super.handleMessage(msg);
 
                 if (msg.what == 2) {
-                    // posting to the MainActivity's thread looper
-                    // can't contain main threads looper in an object
+                    parseStationInfo();
+                    handlerWaitCount++;
+
+                    // Need to post to the MainActivity's thread looper
+                    // when the items created in that activity are being accessed
+                    // (i.e. TextView or an EditText)
                     new Handler(Looper.getMainLooper()).post(() -> {
-                        parseStationInfo();
-                        handlerWaitCount++;
                         updateView();
                     });
                 }
@@ -130,9 +132,10 @@ public class MainActivity extends AppCompatActivity {
                 super.handleMessage(msg);
 
                 if (msg.what == 2) {
+                    metarBuilder = parseMetarInfo();
+                    handlerWaitCount++;
+
                     new Handler(Looper.getMainLooper()).post(() -> {
-                        metarBuilder = parseMetarInfo();
-                        handlerWaitCount++;
                         updateView();
                     });
                 }
@@ -148,9 +151,10 @@ public class MainActivity extends AppCompatActivity {
                 super.handleMessage(msg);
 
                 if (msg.what == 2) {
+                    tafBuilder = parseTafInfo();
+                    handlerWaitCount++;
+
                     new Handler(Looper.getMainLooper()).post(() -> {
-                        tafBuilder = parseTafInfo();
-                        handlerWaitCount++;
                         updateView();
                     });
                 }
