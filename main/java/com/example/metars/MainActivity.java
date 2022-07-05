@@ -760,9 +760,9 @@ public class MainActivity extends AppCompatActivity {
         if (displayFormatted) {
             str = "Location:" + station.site + " " + station.state;
 
-            str += String.format("\nAltitude:%.2f", station.elevation_m * feetInMeters);
-
             str += ("\n\nATMOSPHERE");
+
+            str += String.format(Locale.ENGLISH, "\n\nAltitude:%.2f", station.elevation_m * feetInMeters);
 
             if (metarBuilder.toString().length() > 0) {
                 str += FormatAtmosphereData();
@@ -771,6 +771,8 @@ public class MainActivity extends AppCompatActivity {
             str += "\n\nMETAR";
         } else {
             str += ("ATMOSPHERE");
+
+            str += String.format(Locale.ENGLISH, "\n\nAltitude:%.2f", station.elevation_m * feetInMeters);
 
             if (metarBuilder.toString().length() > 0) {
                 str += FormatAtmosphereData();
@@ -809,7 +811,8 @@ public class MainActivity extends AppCompatActivity {
 
         String str = "\nPressure Altitude:" + String.format(Locale.ENGLISH, "%.2f", pa + alt);
 
-        str += "\nDensity Altitude:" + String.format(Locale.ENGLISH, "%.2f", da) + " (" + String.format(Locale.ENGLISH, "%.2f", (station.elevation_m * feetInMeters) + da) + ")";
+        str += "\nDensity Altitude:" + String.format(Locale.ENGLISH, "%.2f", da) +
+                " (" + String.format(Locale.ENGLISH, "%.2f", (station.elevation_m * feetInMeters) + da) + ")";
 
         str += "\nRelative Humidity:" + String.format(Locale.ENGLISH, "%.2f", rh);
 
@@ -819,9 +822,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private double PressureAltitude(double p) {
-        return 145366.45 * (1 - Math.pow(((33.8639 * p) / 1013.25), 0.190284));
+        return 145366.45 * (1.0 - Math.pow(((33.8639 * p) / 1013.25), 0.190284));
     }
 
+    // temperatures are in celcius
     private double CloudBaseAGL(double t, double d) {
             return ((t - d) / 2.5) * 1000.00;
     }
@@ -836,7 +840,7 @@ public class MainActivity extends AppCompatActivity {
 
     private double VirtualTemperature(Temperature tc, double pressureHg, @NonNull Temperature dc) {
         // vapor pressure uses celcius
-        double vp = 6.11 * Math.pow(10, ((7.5 * dc.cValue) / (237.7 + dc.cValue)));
+        double vp = 6.11 * Math.pow(10.0, ((7.5 * dc.cValue) / (237.7 + dc.cValue)));
 
         double mbpressure = 33.8639 * pressureHg;
 
@@ -865,7 +869,7 @@ public class MainActivity extends AppCompatActivity {
     private double RelativeHumidity(double d, double t) {
         // Temperatures are celcius
         // =100*(EXP((17.625*TD)/(243.04+TD))/EXP((17.625*T)/(243.04+T)))
-        return 100 * (Math.exp((17.625 * d) / (243.04 + d)) / Math.exp((17.625 * t) / (243.04 + t)));
+        return 100.0 * (Math.exp((17.625 * d) / (243.04 + d)) / Math.exp((17.625 * t) / (243.04 + t)));
     }
 
     @NonNull

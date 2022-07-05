@@ -1,13 +1,13 @@
 package com.example.metars;
 
 public class Temperature {
-    public Double fValue;
-    public Double cValue;
-    public Double kValue;
-    public Double rValue;
-    public Double vValue;
+    public double fValue;
+    public double cValue;
+    public double kValue;
+    public double rValue;
+    public double vValue;
 
-    public Temperature(String tp, Double t) {
+    public Temperature(String tp, double t) {
         switch (tp) {
             case "C": {
                 cValue = t;
@@ -38,27 +38,27 @@ public class Temperature {
         }
     }
 
-    public Double ConvertCtoF(Double t) {
-        return (t * (9 / 5)) + 32;
+    public double ConvertCtoF(double t) {
+        return (t * (9.0 / 5.0)) + 32.0;
     }
 
-    public Double ConvertCtoK(Double t) {
+    public double ConvertCtoK(double t) {
         return t + 273.15;
     }
 
-    public Double ConvertFtoC(Double t) {
-        return (t - 32) * (5 / 9);
+    public double ConvertFtoC(double t) {
+        return (t - 32.0) * (5.0 / 9.0);
     }
 
-    public Double ConvertKtoR(Double t) {
-        Double tc = ConvertKtoC(t);
+    public double ConvertKtoR(double t) {
+        double tc = ConvertKtoC(t);
 
-        Double tf = ConvertCtoF(tc);
+        double tf = ConvertCtoF(tc);
 
         return tf + 459.69;
     }
 
-    public Double ConvertKtoC(Double t) {
+    public double ConvertKtoC(double t) {
         return t - 273.15;
     }
 }

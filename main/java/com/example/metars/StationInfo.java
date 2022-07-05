@@ -2,9 +2,9 @@ package com.example.metars;
 
 public class StationInfo {
     public String station_id;
-    public Double latitude;
-    public Double longitude;
-    public Double elevation_m;
+    public double latitude;
+    public double longitude;
+    public double elevation_m;
     public String site;
     public String state;
     public String country;
